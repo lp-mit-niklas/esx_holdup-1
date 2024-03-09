@@ -33,8 +33,8 @@ AddEventHandler('esx_holdup:robberyStarted', function(currentStore)
 				rob = true
 				for i=1, #(xPlayers) do 
 					local xPlayer = xPlayers[i]
-					TriggerClientEvent('esx:showNotification', xPlayer.source, TranslateCap('rob_in_prog', store.nameOfStore))
-					TriggerClientEvent('esx_holdup:setBlip', xPlayer.source, Stores[currentStore].position)
+                                        local coords = vector2(Stores[robb].position["x"], Stores[robb].position["y"])
+                                        ´TriggerEvent('emergencydispatch:emergencycall:new', "police", "Ladenraub (automatischer Notruf)", coords, true)
 				end
 				TriggerClientEvent('esx:showNotification', source, TranslateCap('started_to_rob', store.nameOfStore))
 				TriggerClientEvent('esx:showNotification', source, TranslateCap('alarm_triggered'))
